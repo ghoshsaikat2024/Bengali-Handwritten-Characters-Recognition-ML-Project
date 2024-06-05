@@ -1,0 +1,134 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{geometry}
+\usetikzlibrary{calc}
+\usepackage{background}
+\usepackage{polyglossia} % Include the polyglossia package for multilingual typesetting
+
+
+
+
+% Set English as the main language and Bengali as the secondary language
+\setmainlanguage{english}
+\setotherlanguage[numerals=Devanagari]{bengali}
+% Define Nirmala UI as the Bengali font
+\newfontfamily\bengalifont{Nirmala UI}
+
+
+% Set margins
+\geometry{
+    left=1.5cm,
+    right=1cm,
+    top=2cm,
+    bottom=2cm,
+}
+
+% Define border settings
+\backgroundsetup{
+    scale=1,
+    angle=0,
+    opacity=1,
+    color=black,
+    contents={%
+        \begin{tikzpicture}[remember picture,overlay]
+            \draw [line width=2pt]
+                ($(current page.north east) + (-4.9cm,3cm)$) % Adjust the coordinates to position the border
+                rectangle
+                ($(current page.south east) + (-1cm,3cm)$); % Adjust the coordinates to position the border
+        \end{tikzpicture}%
+    }
+}
+
+
+
+
+
+\begin{document}
+\vspace*{0.5cm}
+%Text above the margin.
+\begin{center}
+    \textbf{Data Collection Form}
+\end{center}
+
+\bigskip
+
+\textbf{Instructions:} Please write the Bengali letters within the specified box and make sure not to overwrite or make any mistakes.The letters that have to be written in each box has been specified below the box.
+
+\bigskip
+\vspace*{2cm}
+
+
+% Set up the grid
+\begin{tikzpicture}
+% Draw boxes
+\foreach \col in {0,...,9} {
+    \pgfmathsetmacro{\xpos}{\col * 1.7} % Horizontal position of the box
+    \draw (\xpos cm, 0) rectangle +(1.7cm, 1.5cm);
+}
+% Print Bengali characters below each box
+\foreach \charindex/\char in {0/অ,1/আ,2/ই,3/ঈ,4/উ,5/ঊ,6/ঋ,7/এ,8/ঐ,9/ও} {
+    \pgfmathsetmacro{\charxpos}{\charindex * 1.7 + 0.85} % Horizontal position of the character
+    \node at (\charxpos cm, -0.5cm) {\bengalifont\char};
+
+}
+\end{tikzpicture}
+\vspace{0.5cm}
+
+\begin{tikzpicture}
+\foreach \col in {0,...,9} {
+    \pgfmathsetmacro{\xpos}{\col * 1.7} % Horizontal position of the box
+    \draw (\xpos cm, 0) rectangle +(1.7cm, 1.5cm);
+}
+\foreach \charindex/\char in {0/ঔ,1/ক,2/খ,3/গ,4/ঘ,5/ঙ,6/চ,7/ছ,8/জ,9/ঝ} {
+    \pgfmathsetmacro{\charxpos}{\charindex * 1.7 + 0.85} % Horizontal position of the character
+    \node at (\charxpos cm, -0.5cm) {\bengalifont\char};
+}
+\end{tikzpicture}
+\vspace{0.5cm}
+
+\begin{tikzpicture}
+\foreach \col in {0,...,9} {
+    \pgfmathsetmacro{\xpos}{\col * 1.7} % Horizontal position of the box
+    \draw (\xpos cm, 0) rectangle +(1.7cm, 1.5cm);
+}
+\foreach \charindex/\char in {0/ঞ,1/ট,2/ঠ,3/ড,4/ঢ,5/ণ,6/ত,7/থ,8/দ,9/ধ} {
+    \pgfmathsetmacro{\charxpos}{\charindex * 1.7 + 0.85} % Horizontal position of the character
+    \node at (\charxpos cm, -0.5cm) {\bengalifont\char};
+}
+\end{tikzpicture}
+\vspace{0.5cm}
+
+\begin{tikzpicture}
+\foreach \col in {0,...,9} {
+    \pgfmathsetmacro{\xpos}{\col * 1.7} % Horizontal position of the box
+    \draw (\xpos cm, 0) rectangle +(1.7cm, 1.5cm);
+}
+\foreach \charindex/\char in {0/ন,1/প,2/ফ,3/ব,4/ভ,5/ম,6/য,7/র,8/ল,9/শ} {
+    \pgfmathsetmacro{\charxpos}{\charindex * 1.7 + 0.85} % Horizontal position of the character
+    \node at (\charxpos cm, -0.5cm) {\bengalifont\char};
+}
+\end{tikzpicture}
+\vspace{0.5cm}
+
+\begin{tikzpicture}
+\foreach \col in {0,...,9} {
+    \pgfmathsetmacro{\xpos}{\col * 1.7} % Horizontal position of the box
+    \draw (\xpos cm, 0) rectangle +(1.7cm, 1.5cm);
+}
+\foreach \charindex/\char in {0/ষ,1/স,2/হ,3/ড়,4/ঢ়,5/য়,6/ৎ,7/◌ং,8/◌ঃ,9/◌ঁ} {
+    \pgfmathsetmacro{\charxpos}{\charindex * 1.7 + 0.85} % Horizontal position of the character
+    \node at (\charxpos cm, -0.5cm) {\bengalifont\char};
+}
+\end{tikzpicture}
+
+
+
+% Draw rectangles at extreme edges of the page
+\begin{tikzpicture}[remember picture, overlay]
+    \fill[black] ([shift={(1.2cm,-2cm)}]current page.north west) rectangle +(0.2cm,0.3cm);
+    \fill[black] ([shift={(-1.5cm,-2cm)}]current page.north east) rectangle +(0.2cm,0.3cm);
+    \fill[black] ([shift={(-1.5cm,2cm)}]current page.south east) rectangle +(0.2cm,0.3cm);
+    \fill[black] ([shift={(1.2cm,2cm)}]current page.south west) rectangle +(0.2cm,0.3cm);
+\end{tikzpicture}
+
+\end{document}
